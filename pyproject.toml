@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "oop-4-1-13"
+version = "0.1.0"
+description = ""
+authors = ["Владислав Кошелев <testvlad59@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flake8 = "^7.1.1"
+
+
+[tool.poetry.group.lint.dependencies]
+mypy = "^1.11.2"
+black = "^24.8.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
