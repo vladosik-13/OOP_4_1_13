@@ -2,7 +2,6 @@ import pytest
 from main import Product, Category
 
 
-@pytest.fixture()
 def test_product_initialization():
     product = Product("Test Product", "This is a test product", 29.99, 5)
     assert product.name == "Test Product"
