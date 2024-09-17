@@ -1,5 +1,5 @@
 import pytest
-from main import Product, Category
+from src.classes_description import Product, Category
 
 
 def test_product_initialization():
