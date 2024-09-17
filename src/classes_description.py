@@ -28,3 +28,8 @@ class Category:
     def add_product(self, product):
         self.__products.append(product)
         Category.product_count += 1
+
+    @property
+    def product_list(self) -> str:
+        return "\n".join(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
+                         for product in self.__products)
