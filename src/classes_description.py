@@ -33,3 +33,7 @@ class Category:
     def product_list(self) -> str:
         return "\n".join(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
                          for product in self.__products)
+
+    @classmethod
+    def new_product(cls, name: str, description: str, price: float, quantity: int):
+        return cls(name, description, price, quantity)
