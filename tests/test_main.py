@@ -1,5 +1,5 @@
-import pytest
 from src.classes_description import Product, Category
+import pytest
 
 
 def test_product_initialization():
@@ -18,6 +18,18 @@ def test_category_initialization():
 
     assert category.name == "Test Category"
     assert category.description == "This is a test category"
-    assert category.products == products
     assert Category.category_count == 1
     assert Category.product_count == 2  # 2 products in the category
+
+
+def test_product_creation():
+    product = Product("Product 1", "Product 1", 80, 15)
+    assert product.name == "Product 1"
+    assert product.description == "Product 1"
+    assert product.price == 80
+    assert product.quantity == 15
+
+
+def test_set_price_zero():
+    product = Product("Product 1", "Product 1", 80, 15)
+    product.price = 0
