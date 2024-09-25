@@ -45,3 +45,15 @@ def test_category_products_str():
     assert len(product_strs) == 2  # There should be two products listed
     assert product_strs[0] == "Product 1, 10.0 руб. Остаток: 2 шт."
     assert product_strs[1] == "Product 2, 20.0 руб. Остаток: 3 шт."
+
+
+def test_category_adding_product():
+    products = [
+        Product("Product 1", "Description 1", 10.0, 2),
+    ]
+    category = Category("Test Category", "This is a test category", products)
+
+    new_product = Product("Product 2", "Description 2", 15.0, 3)
+    category.add_product(new_product)
+
+    assert category.__str__() == "Test Category, общее количество продуктов: 5 шт."  # 2 + 3 = 5
