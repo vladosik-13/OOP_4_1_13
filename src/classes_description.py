@@ -37,6 +37,7 @@ class Product:
             return (self.price * self.quantity) + (other.price * other.quantity)
         return NotImplemented
 
+
 class Category:
     name: str
     description: str
