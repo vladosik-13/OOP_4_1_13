@@ -56,4 +56,4 @@ def test_category_adding_product():
     new_product = Product("Product 2", "Description 2", 15.0, 3)
     category.add_product(new_product)
 
-    assert category.__str__() == "Test Category, общее количество продуктов: 5 шт."  # 2 + 3 = 5
+    assert category.__str__() == "Test Category, общее количество продуктов: 5 шт."
