@@ -29,6 +29,9 @@ class Product:
         quantity = new_product.get("quantity")
         return Product(name, description, price, quantity)
 
+    def __str__(self) -> str:
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
 
 class Category:
     name: str
@@ -52,3 +55,6 @@ class Category:
     def products(self) -> str:
         return "\n".join(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
                          for product in self.__products)
+
+    def __str__(self) -> str:
+        return f"{self.name}, количество продуктов: {len(self.__products)} шт."
