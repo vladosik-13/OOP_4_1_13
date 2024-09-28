@@ -81,8 +81,7 @@ class Smartphone(Product):
         self.color = color
 
     def __str__(self) -> str:
-        return (super().__str__() +
-                f", Эффективность: {self.efficiency}, Модель: {self.model}, "
+        return (super().__str__() + f", Эффективность: {self.efficiency}, Модель: {self.model}, "
                 f"Встроенная память: {self.memory} ГБ, Цвет: {self.color}")
 
 
@@ -94,6 +93,5 @@ class LawnGrass(Product):
         self.color = color
 
     def __str__(self) -> str:
-        return (super().__str__() +
-                f", Страна производства: {self.country}, Срок прорастания: {self.germination_period} дней, "
+        return (super().__str__() + f", Страна производства: {self.country}, Срок прорастания: {self.germination_period} дней, "
                 f"Цвет: {self.color}")
