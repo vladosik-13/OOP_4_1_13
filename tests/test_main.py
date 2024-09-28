@@ -1,4 +1,5 @@
-from src.classes_description import Product, Category
+from src.classes_description import Product, Category, Smartphone, LawnGrass
+import pytest
 
 
 def test_product_initialization():
