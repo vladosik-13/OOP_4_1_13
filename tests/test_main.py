@@ -70,6 +70,7 @@ def test_smartphone_initialization():
     assert smartphone.memory == 128
     assert smartphone.color == "синий"
 
+
 def test_lawn_grass_initialization():
     lawn_grass = LawnGrass("Газонная трава", "Трава для газона", 300, 50, "Россия", 14, "зеленый")
     assert lawn_grass.name == "Газонная трава"
