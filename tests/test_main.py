@@ -1,4 +1,4 @@
-from src.classes_description import Product, Category
+from src.classes_description import Product, Category, LawnGrass, Smartphone
 
 
 def test_product_initialization():
@@ -57,3 +57,25 @@ def test_category_adding_product():
     category.add_product(new_product)
 
     assert category.__str__() == "Test Category, общее количество продуктов: 5 шт."
+
+
+def test_smartphone_initialization():
+    smartphone = Smartphone("iPhone 14", "Смартфон от Apple", 79999, 10, "A15 Bionic", "iPhone 14", 128, "синий")
+    assert smartphone.name == "iPhone 14"
+    assert smartphone.description == "Смартфон от Apple"
+    assert smartphone.price == 79999
+    assert smartphone.quantity == 10
+    assert smartphone.efficiency == "A15 Bionic"
+    assert smartphone.model == "iPhone 14"
+    assert smartphone.memory == 128
+    assert smartphone.color == "синий"
+
+def test_lawn_grass_initialization():
+    lawn_grass = LawnGrass("Газонная трава", "Трава для газона", 300, 50, "Россия", 14, "зеленый")
+    assert lawn_grass.name == "Газонная трава"
+    assert lawn_grass.description == "Трава для газона"
+    assert lawn_grass.price == 300
+    assert lawn_grass.quantity == 50
+    assert lawn_grass.country == "Россия"
+    assert lawn_grass.germination_period == 14
+    assert lawn_grass.color == "зеленый"
