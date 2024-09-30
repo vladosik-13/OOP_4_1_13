@@ -33,17 +33,10 @@ class BaseProduct(ABC):
         pass
 
 
-class Product:
-    name: str
-    description: str
-    price: float
-    quantity: int
-
+class Product(BaseProduct):
     def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
+        super().__init__(name, description, price, quantity)
         self.__price = price
-        self.quantity = quantity
 
     @property
     def price(self) -> float:
@@ -62,7 +55,7 @@ class Product:
         description = new_product.get("description")
         price = new_product.get("price")
         quantity = new_product.get("quantity")
-        return Product(name, description, price, quantity)
+        return cls(name, description, price, quantity)
 
     def __str__(self) -> str:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
@@ -99,8 +92,8 @@ class Category:
 
     @property
     def products(self) -> str:
-        return "\n".join(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
-                         for product in self.__products)
+        return "\n".join(
+            f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт." for product in self.__products)
 
     def __str__(self) -> str:
         total_quantity = sum(product.quantity for product in self.__products)
@@ -117,7 +110,7 @@ class Smartphone(Product):
 
     def __str__(self) -> str:
         return (super().__str__() + f", Эффективность: {self.efficiency}, Модель: {self.model}, "
-                f"Встроенная память: {self.memory} ГБ, Цвет: {self.color}")
+                                    f"Встроенная память: {self.memory} ГБ, Цвет: {self.color}")
 
 
 class LawnGrass(Product):
@@ -129,5 +122,4 @@ class LawnGrass(Product):
 
     def __str__(self) -> str:
         return (super().__str__() + f", Страна производства: {self.country}, Срок прорастания: "
-                                    f"{self.germination_period} дней, "
-                f"Цвет: {self.color}")
+                                    f"{self.germination_period} дней, Цвет: {self.color}")
