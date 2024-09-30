@@ -34,7 +34,11 @@ class Product:
 
     def __add__(self, other):
         if isinstance(other, Product):
-            return (self.price * self.quantity) + (other.price * other.quantity)
+            if type(self) == type(other):
+                return (self.price * self.quantity) + (other.price * other.quantity)
+            else:
+                raise TypeError(
+                    f"Невозможно сложить товар типа {type(self).__name__} с товаром типа {type(other).__name__}.")
         return NotImplemented
 
 
@@ -53,6 +57,8 @@ class Category:
         Category.product_count += len(self.__products)
 
     def add_product(self, product):
+        if not isinstance(product, Product):
+            raise TypeError("Добавляемый объект должен быть продуктом или его наследником.")
         self.__products.append(product)
         Category.product_count += 1
 
@@ -64,3 +70,29 @@ class Category:
     def __str__(self) -> str:
         total_quantity = sum(product.quantity for product in self.__products)
         return f"{self.name}, общее количество продуктов: {total_quantity} шт."
+
+
+class Smartphone(Product):
+    def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+    def __str__(self) -> str:
+        return (super().__str__() + f", Эффективность: {self.efficiency}, Модель: {self.model}, "
+                f"Встроенная память: {self.memory} ГБ, Цвет: {self.color}")
+
+
+class LawnGrass(Product):
+    def __init__(self, name, description, price, quantity, country, germination_period, color):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+    def __str__(self) -> str:
+        return (super().__str__() + f", Страна производства: {self.country}, Срок прорастания: "
+                                    f"{self.germination_period} дней, "
+                f"Цвет: {self.color}")
