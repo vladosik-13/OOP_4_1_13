@@ -33,7 +33,15 @@ class BaseProduct(ABC):
         pass
 
 
-class Product(BaseProduct):
+class Mixin:
+    def __init__(self, *args, **kwargs):
+        class_name = self.__class__.__name__
+        parameters = ', '.join(repr(arg) for arg in args)
+        print(f"Создан объект класса {class_name} с параметрами: {parameters}")
+        super().__init__(*args, **kwargs)
+
+
+class Product(Mixin, BaseProduct):
     def __init__(self, name, description, price, quantity):
         super().__init__(name, description, price, quantity)
         self.__price = price
