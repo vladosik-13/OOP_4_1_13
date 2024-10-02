@@ -1,4 +1,4 @@
-from src.classes_description import Category, Smartphone, LawnGrass
+from src.classes_description import Category, Smartphone, LawnGrass, BaseProduct, Product
 
 
 if __name__ == '__main__':

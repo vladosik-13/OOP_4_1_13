@@ -92,8 +92,8 @@ class Category:
 
     @property
     def products(self) -> str:
-        return "\n".join(
-            f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт." for product in self.__products)
+        return "\n".join(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
+                         for product in self.__products)
 
     def __str__(self) -> str:
         total_quantity = sum(product.quantity for product in self.__products)
@@ -110,7 +110,7 @@ class Smartphone(Product):
 
     def __str__(self) -> str:
         return (super().__str__() + f", Эффективность: {self.efficiency}, Модель: {self.model}, "
-                                    f"Встроенная память: {self.memory} ГБ, Цвет: {self.color}")
+                f"Встроенная память: {self.memory} ГБ, Цвет: {self.color}")
 
 
 class LawnGrass(Product):
@@ -122,4 +122,5 @@ class LawnGrass(Product):
 
     def __str__(self) -> str:
         return (super().__str__() + f", Страна производства: {self.country}, Срок прорастания: "
-                                    f"{self.germination_period} дней, Цвет: {self.color}")
+                                    f"{self.germination_period} дней, "
+                f"Цвет: {self.color}")
