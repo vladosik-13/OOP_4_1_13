@@ -89,3 +89,4 @@ def test_mixin_product_creation_output():
 
     mocked_print.assert_called_once_with("Создан объект класса Product с параметрами: "
                                          "'Продукт1', 'Описание продукта', 1200, 10")
+

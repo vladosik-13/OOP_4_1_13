@@ -132,3 +132,4 @@ class LawnGrass(Product):
         return (super().__str__() + f", Страна производства: {self.country}, Срок прорастания: "
                                     f"{self.germination_period} дней, "
                 f"Цвет: {self.color}")
+
