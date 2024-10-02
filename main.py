@@ -1,4 +1,4 @@
-from src.classes_description import Category, Smartphone, LawnGrass, BaseProduct, Product
+from src.classes_description import Category, Product
 
 
 if __name__ == '__main__':
@@ -22,7 +22,8 @@ if __name__ == '__main__':
     print(product3.quantity)
 
     category1 = Category("Смартфоны",
-                         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+                         "Смартфоны, как средство не только коммуникации, но и получения дополнительных"
+                         " функций для удобства жизни",
                          [product1, product2, product3])
 
     print(category1.name == "Смартфоны")
@@ -33,13 +34,13 @@ if __name__ == '__main__':
 
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
     category2 = Category("Телевизоры",
-                         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+                         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим "
+                         "другом и помощником",
                          [product4])
 
     print(category2.name)
     print(category2.description)
     print(len(category2.products))
     print(category2.products)
-
     print(Category.category_count)
     print(Category.product_count)
