@@ -1,14 +1,50 @@
-class Product:
-    name: str
-    description: str
-    price: float
-    quantity: int
+from abc import ABC, abstractmethod
 
+
+class BaseProduct(ABC):
+    @abstractmethod
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.__price = price
+        self.price = price
         self.quantity = quantity
+
+    @property
+    @abstractmethod
+    def price(self) -> float:
+        pass
+
+    @price.setter
+    @abstractmethod
+    def price(self, value: float):
+        pass
+
+    @classmethod
+    @abstractmethod
+    def new_product(cls, new_product: dict):
+        pass
+
+    @abstractmethod
+    def __str__(self) -> str:
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+
+class Mixin:
+    def __init__(self, *args, **kwargs):
+        class_name = self.__class__.__name__
+        parameters = ', '.join(repr(arg) for arg in args)
+        print(f"Создан объект класса {class_name} с параметрами: {parameters}")
+        super().__init__(*args, **kwargs)
+
+
+class Product(Mixin, BaseProduct):
+    def __init__(self, name, description, price, quantity):
+        super().__init__(name, description, price, quantity)
+        self.__price = price
 
     @property
     def price(self) -> float:
@@ -27,7 +63,7 @@ class Product:
         description = new_product.get("description")
         price = new_product.get("price")
         quantity = new_product.get("quantity")
-        return Product(name, description, price, quantity)
+        return cls(name, description, price, quantity)
 
     def __str__(self) -> str:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."

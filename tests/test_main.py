@@ -1,4 +1,5 @@
 from src.classes_description import Product, Category, LawnGrass, Smartphone
+from unittest.mock import patch
 
 
 def test_product_initialization():
@@ -80,3 +81,11 @@ def test_lawn_grass_initialization():
     assert lawn_grass.country == "Россия"
     assert lawn_grass.germination_period == 14
     assert lawn_grass.color == "зеленый"
+
+
+def test_mixin_product_creation_output():
+    with patch('builtins.print') as mocked_print:
+        product = Product('Продукт1', 'Описание продукта', 1200, 10)
+
+    mocked_print.assert_called_once_with("Создан объект класса Product с параметрами: "
+                                         "'Продукт1', 'Описание продукта', 1200, 10")
