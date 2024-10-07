@@ -109,6 +109,20 @@ class Category:
         total_quantity = sum(product.quantity for product in self.__products)
         return f"{self.name}, общее количество продуктов: {total_quantity} шт."
 
+    def middle_price(self):
+        try:
+            if not self.__products:
+                raise ValueError("В категории нет товаров.")
+            total_price = sum(product.price for product in self.__products)
+            total_count = len(self.__products)
+            return total_price / total_count
+        except ValueError as e:
+            print(e)
+            return 0
+        except Exception as e:
+            print(f"Произошла ошибка: {e}")
+            return 0
+
 
 class Smartphone(Product):
     def __init__(self, name, description, price, quantity, efficiency, model, memory, color):
