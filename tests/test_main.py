@@ -1,3 +1,4 @@
+import pytest
 from src.classes_description import Product, Category, LawnGrass, Smartphone
 from unittest.mock import patch
 
@@ -89,3 +90,8 @@ def test_mixin_product_creation_output():
 
     mocked_print.assert_called_once_with("Создан объект класса Product с параметрами: "
                                          "'Продукт1', 'Описание продукта', 1200, 10")
+
+
+def test_product_creation_zero_quantity():
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен."):
+        Product(name="Тестовый продукт", description="Описание продукта", price=100.0, quantity=0)
