@@ -95,3 +95,9 @@ def test_mixin_product_creation_output():
 def test_product_creation_zero_quantity():
     with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен."):
         Product(name="Тестовый продукт", description="Описание продукта", price=100.0, quantity=0)
+
+
+def test_middle_price_empty_category():
+    category = Category("Пустая категория", "Описание пустой категории", [])
+    assert category.middle_price() == 0
+
